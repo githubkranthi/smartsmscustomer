@@ -1,0 +1,28 @@
+.nav-sidebar .nav-item:not (.nav-item-header ):first-child {
+	padding-top: 0;
+}
+
+.btn.approvedelete-btn {
+	padding: .2375rem .375rem;
+}
+
+.btn.approvedelete-btn {
+	padding: .2375rem .375rem;
+}
+
+.dataTables_filter {
+	margin: 0 0 .25rem .25rem
+}
+
+.dataTables_length {
+	margin: 0 0 0.25rem 0.25rem
+}
+
+.personal-sms-tbl .table td {
+	cursor: pointer;
+}
+
+.model-templ-group .tab-content .table td, .model-templ-group .tab-content .table th,
+	.personal-sms-tbl .table td, .personal-sms-tbl .table th {
+	padding: .4rem 1rem;
+}

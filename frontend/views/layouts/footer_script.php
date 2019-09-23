@@ -1,0 +1,1 @@
+<script src="<?php echo Yii::getAlias('@web').'/assets/js/app.js'; ?>"></script>
