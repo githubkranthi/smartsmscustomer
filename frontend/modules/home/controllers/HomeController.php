@@ -163,4 +163,14 @@ class HomeController extends Controller
     {
         return $this->render('/customSmsFile');
     }
+
+    public function actionQuery()
+    {
+        return $this->render('/query');
+    }
+
+    public function actionViewQuery()
+    {
+        return $this->render('/viewQuery');
+    }
 }
