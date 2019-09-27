@@ -1,9 +1,8 @@
 <script
 	src="<?php echo Yii::getAlias('@web').'/assets/global_assets/js/demo_pages/chat_layouts.js'; ?>"></script>
 <style>
-.sidebar.sidebar-dark,
-.page-header.page-header-light{
-display:none;
+.sidebar.sidebar-dark, .page-header.page-header-light {
+	display: none;
 }
 </style>
 
@@ -172,12 +171,18 @@ display:none;
 			cols="1" placeholder="Enter your message..."></textarea>
 
 		<div class="d-flex align-items-center">
-			<div class="list-icons list-icons-extended">
-				<a href="#" class="list-icons-item" data-popup="tooltip"
-					data-container="body" title="Send photo"><i
-					class="icon-file-picture"></i></a> <a href="#"
-					class="list-icons-item" data-popup="tooltip" data-container="body"
-					title="Send file"><i class="icon-file-plus"></i></a>
+			<div class="list-icons list-icons-extended border border-info">
+				<i class="icon-file-picture" title="Choose File"
+					style="display: none; padding: 5px; margin-right: 0px;"></i> <label
+					for="file-upload" title="Choose File" class="list-icons-item"
+					style="padding: 5px; margin: 0px; cursor: pointer;"> <i
+					class="icon-file-picture"></i>
+				</label> <input id="file-upload" name='upload_cont_img' type="file"
+					style="display: none;">
+				<!-- <input type="file" style="display: none" />
+    							<button><i class="icon-file-picture"></i></button> -->
+				<!-- <a href="#" class="list-icons-item" data-popup="tooltip" data-container="body" title="Send photo"><i class="icon-file-picture"></i></a>
+                                <a href="#" class="list-icons-item" data-popup="tooltip" data-container="body" title="Send file"><i class="icon-file-plus"></i></a> -->
 			</div>
 
 			<button type="button"
@@ -187,3 +192,12 @@ display:none;
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+$('#file-upload').change(function() {
+  var i = $(this).prev('label').clone();
+  var file = $('#file-upload')[0].files[0].name;
+  $(this).prev('label').text(file);
+  $('.icon-file-picture').show();
+});
+</script>

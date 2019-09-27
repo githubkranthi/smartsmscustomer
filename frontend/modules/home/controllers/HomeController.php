@@ -98,11 +98,35 @@ class HomeController extends Controller
                 ];
                 break;
             case 'listsenderids':
+                $arrAddOns = [
+                    'userid' => 1
+                ];
+                break;
+        }
+        $arrInputs = $this->formatInputs($arrInputs);
+        $arrResponse = array_merge($arrInputs, $arrAddOns);
+        unset($arrInputs, $arrAddOns);
+        return $arrResponse;
+    }
+
+    private function formatInputs($arrInputs)
+    {
+        $arrResponse = $arrModified = [];
+        switch ($arrInputs['action']) {
+            case 'newsenderid':
+                $arrModified[] = [
+                    'senderid' => $arrInputs['senderid'],
+                    'comments' => $arrInputs['comments']
+                ];
+                unset($arrInputs['senderid'], $arrInputs['comments']);
+                $arrInputs['senderids'] = Json::encode($arrModified);
+                break;
+            case 'listsenderids':
 
                 break;
         }
-        $arrResponse = array_merge($arrInputs, $arrAddOns);
-        unset($arrInputs, $arrAddOns);
+        $arrResponse = $arrInputs;
+        unset($arrInputs, $arrModified);
         return $arrResponse;
     }
 
@@ -121,7 +145,28 @@ class HomeController extends Controller
 
     public function actionSenderId()
     {
+        //$arrSenderIds = $this->list('listsenderids');
+        //print_r($arrSenderIds);
+        //die();
         return $this->render('/senderid');
+    }
+
+    private function list($strAction)
+    {
+        $arrResponse = [];
+        switch ($strAction) {
+            case 'listsenderids':
+                $arrInputs = [
+                    'category_type' => 'sms',
+                    'action' => 'listsenderids'
+                ];
+                $arrInputs = $this->addOns($arrInputs);
+                $arrResponse = $this->fire($arrInputs);
+                break;
+        }
+
+        unset($arrInputs, $strAction);
+        return $arrResponse;
     }
 
     public function actionBlockList()
